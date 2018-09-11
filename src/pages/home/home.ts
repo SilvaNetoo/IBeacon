@@ -19,7 +19,7 @@ templateUrl: 'home.html'
 })
 export class HomePage {
 
-beacons: BeaconModel[] = [];
+beacons: Array<BeaconModel> = new Array<BeaconModel>();
 zone: any;
 
 constructor(public navCtrl: NavController, public platform: Platform, public beaconProvider: BeaconProvider, public events: Events) {

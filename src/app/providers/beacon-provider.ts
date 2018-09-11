@@ -31,18 +31,19 @@ export class BeaconProvider {
         .subscribe(
         data => {
         this.events.publish('didRangeBeaconsInRegion', data);
+        
     },error => console.error());
 
         // setup a beacon region – CHANGE THIS TO YOUR OWN UUID
-        this.region = this.ibeacon.BeaconRegion('deskBeacon', 'F7826DA6-4FA2-4E98-8024-BC5B71E0893E');
+        this.region = this.ibeacon.BeaconRegion('UUID', '003e8c80-ea01-4ebb-b888-78da19df9e55');
 
         // start ranging
         this.ibeacon.startRangingBeaconsInRegion(this.region).then(() => { 
         resolve(true);
-    },error => {
-        console.error('Failed to begin monitoring: ', error);
-        resolve(false);
-    });
+        },error => {
+            console.error('Failed to begin monitoring: ', error);
+            resolve(false);
+        });
     } else {
         console.error("This application needs to be running on a device");
         resolve(false);
